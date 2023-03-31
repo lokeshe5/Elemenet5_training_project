@@ -1,0 +1,163 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/Launch.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/Login.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "UserName&Sequence_1",
+        "Userpasswd&Sequence_1",
+        "IsValidUserNameElement&Sequence_1",
+        "IsEmailExists&Sequence_1",
+        "IsValidPasswordField&Sequence_1",
+        "IsValidLoginButton&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CheckSequence.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ExtractedDatasVar&Sequence_1",
+        "FilteredDatas&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/Logout.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/AccessWorkItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/FilterCleint.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "CurrentCleintUrl&Sequence_5",
+        "CleintHashCode&Sequence_5",
+        "CleintDetailsPage&Sequence_3",
+        "CleintDetails&Sequence_5",
+        "CleintCountry&Sequence_5",
+        "CleintName&Sequence_5",
+        "CleintId&Sequence_5",
+        "CleintInfo&Sequence_5",
+        "HashText&Sequence_5",
+        "CleintUrl&Sequence_5",
+        "ExtractDataTable&Sequence_3",
+        "CleintTable&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "CleintHashCode",
+        "GenerateHashPageUrl"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/GenerateHash.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "CleintHashCode",
+        "CleintDetailsPage",
+        "GenerateHashUrl",
+        "CleintDetails"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Generic/UpdateWorkItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Extract Datas/extractData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "IsWorkItemPage&Sequence_1",
+        "ExtractDataTable&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Filter Data/filterData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "Type",
+        "ExtractedDatas",
+        "FilteredDatasOut"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Goto Workitem/gotoWorkItem.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Get Page Count/getPageCount.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "value&Sequence_1",
+        "Value&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "FilteredTable",
+        "PageCount"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Open Workitems/openWorkItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": [
+        "FilteredData",
+        "Id"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

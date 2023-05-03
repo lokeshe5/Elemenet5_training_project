@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,930</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,1194</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Goto_Page_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -99,7 +99,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Goto_Page" sap:VirtualizedContainerService.HintSize="534,865" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Goto_Page" sap:VirtualizedContainerService.HintSize="534,1129" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:Image" Name="Image" />
     </Sequence.Variables>
@@ -108,6 +108,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="472,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Goto_Page activity started&quot;]" />
     <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,754" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="0f98f04e-c215-4d66-b118-835dc5a982ff" DisplayName="CV Screen Scope 'OL'" sap:VirtualizedContainerService.HintSize="434,526" sap2010:WorkflowViewState.IdRef="CVScope_2" RequiresDefaultValues="True" SendOnPremData="False" Version="V6">
@@ -117,7 +118,7 @@
                 <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
               </ActivityAction.Argument>
               <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '&quot;+ PageName +&quot;' (404,171,263,13)&quot; +&#xD;&#xA;&quot;Anchor: Text 'Work Items - Work Item Details' (387,93,500,31)&quot;]" DesignTimeCacheId="0f98f04e-c215-4d66-b118-835dc5a982ff" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="400,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_3" InformativeScreenshot="c27ce00342fed86f73df1c988ce9d47c" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
+                <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '&quot;+ PageName +&quot;' (404,171,263,13)&quot; +&#xA;&quot;Anchor: Text 'Work Items - Work Item Details' (387,93,500,31)&quot;]" DesignTimeCacheId="0f98f04e-c215-4d66-b118-835dc5a982ff" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="400,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_3" InformativeScreenshot="c27ce00342fed86f73df1c988ce9d47c" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
                   <p:CvClickWithDescriptor.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -154,6 +155,9 @@
               </Sequence>
             </ActivityAction>
           </p:CVScope.Body>
+          <p:CVScope.DesignTimeCache>
+            <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" DataSent="False" />
+          </p:CVScope.DesignTimeCache>
           <p:CVScope.DesignTimeCacheContainer>
             <uc:CvCacheContainer>
               <uc:CvCacheContainer.Caches>
@@ -335,5 +339,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="472,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Goto_Page activity ended&quot;]" />
   </Sequence>
 </Activity>

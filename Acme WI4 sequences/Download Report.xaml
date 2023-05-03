@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,3086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>572,3984</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Download_Report_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -93,7 +93,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Download_Report" sap:VirtualizedContainerService.HintSize="506,3021" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Download_Report" sap:VirtualizedContainerService.HintSize="582,3919" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:Image" Name="Image" />
     </Sequence.Variables>
@@ -102,7 +102,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="439cb29e-dad0-4eb2-af63-3346eccd0766" DisplayName="CV Screen Scope 'BODY'" sap:VirtualizedContainerService.HintSize="444,2910" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Download_Report activity started&quot;]" />
+    <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="439cb29e-dad0-4eb2-af63-3346eccd0766" DisplayName="CV Screen Scope 'BODY'" sap:VirtualizedContainerService.HintSize="520,3544" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
       <p:CVScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -112,7 +113,7 @@
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="IsPopupExists" />
             </Sequence.Variables>
-            <If Condition="[&quot;January&quot;.Equals(Month)]" sap:VirtualizedContainerService.HintSize="410,423" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[&quot;January&quot;.Equals(Month)]" sap:VirtualizedContainerService.HintSize="486,455" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,273" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
@@ -150,31 +151,116 @@
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6" />
               </If.Else>
             </If>
-            <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: InputBox (458,364,224,37)&quot; +&#xA;&quot;Anchor: Text 'Month:' (459,343,47,13)&quot;]" DesignTimeCacheId="edd7f952-35ad-4663-80a4-896a2d8a42c9" DesignTimeScaleFactor="1" DisplayName="CV Click - InputBox" sap:VirtualizedContainerService.HintSize="410,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_1" InformativeScreenshot="1111445e94d821f598cfa6e3f7916634" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
-              <p:CvClickWithDescriptor.CursorPosition>
-                <ui:CursorPosition Position="Center">
-                  <ui:CursorPosition.OffsetX>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetX>
-                  <ui:CursorPosition.OffsetY>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetY>
-                </ui:CursorPosition>
-              </p:CvClickWithDescriptor.CursorPosition>
-              <p:CvClickWithDescriptor.DesignTimeDescriptor>
-                <uc:CvDescriptor Id="bd658ece-620c-48f8-9ad0-3065b1868b2d">
-                  <uc:CvDescriptor.Anchors>
-                    <x:Array Type="uc:CvElementDescriptor">
-                      <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="459, 343, 47, 13" ElementType="Text" Text="Month:" />
-                    </x:Array>
-                  </uc:CvDescriptor.Anchors>
-                  <uc:CvDescriptor.Target>
-                    <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="458, 364, 224, 37" ElementType="InputBox" />
-                  </uc:CvDescriptor.Target>
-                </uc:CvDescriptor>
-              </p:CvClickWithDescriptor.DesignTimeDescriptor>
-              <p:CvClickWithDescriptor.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2f0d8435-b35e-4576-ac73-ba633ef588e8">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,375" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,296" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: InputBox (458,364,224,37)&quot; +&#xA;&quot;Anchor: Text 'Month:' (459,343,47,13)&quot;]" DesignTimeCacheId="edd7f952-35ad-4663-80a4-896a2d8a42c9" DesignTimeScaleFactor="1" DisplayName="CV Click - InputBox" sap:VirtualizedContainerService.HintSize="388,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_1" InformativeScreenshot="1111445e94d821f598cfa6e3f7916634" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
+                    <p:CvClickWithDescriptor.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </p:CvClickWithDescriptor.CursorPosition>
+                    <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                      <uc:CvDescriptor Id="bd658ece-620c-48f8-9ad0-3065b1868b2d">
+                        <uc:CvDescriptor.Anchors>
+                          <x:Array Type="uc:CvElementDescriptor">
+                            <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="459, 343, 47, 13" ElementType="Text" Text="Month:" />
+                          </x:Array>
+                        </uc:CvDescriptor.Anchors>
+                        <uc:CvDescriptor.Target>
+                          <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="458, 364, 224, 37" ElementType="InputBox" />
+                        </uc:CvDescriptor.Target>
+                      </uc:CvDescriptor>
+                    </p:CvClickWithDescriptor.DesignTimeDescriptor>
+                    <p:CvClickWithDescriptor.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2f0d8435-b35e-4576-ac73-ba633ef588e8">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </p:CvClickWithDescriptor.Target>
+                  </p:CvClickWithDescriptor>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,375" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,296" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '&quot;+ Month +&quot;' (480,438,52,17)&quot; +&#xA;&quot;Anchor: Text 'Month:' (459,343,47,13)&quot;]" DesignTimeCacheId="22eae7a5-a612-4baf-a8e1-e125aade1d1b" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="388,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_2" InformativeScreenshot="54e67eee0dfc2ebdb253896ca0b1a176" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
+                    <p:CvClickWithDescriptor.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </p:CvClickWithDescriptor.CursorPosition>
+                    <p:CvClickWithDescriptor.DesignTimeDescriptor>
+                      <uc:CvDescriptor Id="0d838708-e25f-4d15-92f3-4f13cf909871">
+                        <uc:CvDescriptor.Anchors>
+                          <x:Array Type="uc:CvElementDescriptor">
+                            <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="459, 343, 47, 13" ElementType="Text" Text="Month:" />
+                          </x:Array>
+                        </uc:CvDescriptor.Anchors>
+                        <uc:CvDescriptor.Target>
+                          <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="480, 438, 52, 17" ElementType="Text" Text="January" />
+                        </uc:CvDescriptor.Target>
+                      </uc:CvDescriptor>
+                    </p:CvClickWithDescriptor.DesignTimeDescriptor>
+                    <p:CvClickWithDescriptor.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="6df4ea94-f2d1-4778-bcbf-8fcff401615b">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </p:CvClickWithDescriptor.Target>
+                  </p:CvClickWithDescriptor>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'BUTTON'" sap:VirtualizedContainerService.HintSize="486,135" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[Month]">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="16">
+                  <x:String>---</x:String>
+                  <x:String>January</x:String>
+                  <x:String>February</x:String>
+                  <x:String>March</x:String>
+                  <x:String>April</x:String>
+                  <x:String>May</x:String>
+                  <x:String>June</x:String>
+                  <x:String>July</x:String>
+                  <x:String>August</x:String>
+                  <x:String>September</x:String>
+                  <x:String>October</x:String>
+                  <x:String>November</x:String>
+                  <x:String>December</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bbf2b9d9-0bfc-4f66-bb8d-c6860ee5388a" InformativeScreenshot="e1ecbfb3400ee309383f6a4852c9c621" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;&lt;webctrl innertext='*Month:*' /&gt;&lt;webctrl aria-role='button' tag='BUTTON' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -182,43 +268,9 @@
                     <InArgument x:TypeArguments="ui:WaitForReady" />
                   </ui:Target.WaitForReady>
                 </ui:Target>
-              </p:CvClickWithDescriptor.Target>
-            </p:CvClickWithDescriptor>
-            <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '&quot;+ Month +&quot;' (480,438,52,17)&quot; +&#xD;&#xA;&quot;Anchor: Text 'Month:' (459,343,47,13)&quot;]" DesignTimeCacheId="22eae7a5-a612-4baf-a8e1-e125aade1d1b" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="410,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_2" InformativeScreenshot="54e67eee0dfc2ebdb253896ca0b1a176" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
-              <p:CvClickWithDescriptor.CursorPosition>
-                <ui:CursorPosition Position="Center">
-                  <ui:CursorPosition.OffsetX>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetX>
-                  <ui:CursorPosition.OffsetY>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetY>
-                </ui:CursorPosition>
-              </p:CvClickWithDescriptor.CursorPosition>
-              <p:CvClickWithDescriptor.DesignTimeDescriptor>
-                <uc:CvDescriptor Id="0d838708-e25f-4d15-92f3-4f13cf909871">
-                  <uc:CvDescriptor.Anchors>
-                    <x:Array Type="uc:CvElementDescriptor">
-                      <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="459, 343, 47, 13" ElementType="Text" Text="Month:" />
-                    </x:Array>
-                  </uc:CvDescriptor.Anchors>
-                  <uc:CvDescriptor.Target>
-                    <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="480, 438, 52, 17" ElementType="Text" Text="January" />
-                  </uc:CvDescriptor.Target>
-                </uc:CvDescriptor>
-              </p:CvClickWithDescriptor.DesignTimeDescriptor>
-              <p:CvClickWithDescriptor.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="6df4ea94-f2d1-4778-bcbf-8fcff401615b">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </p:CvClickWithDescriptor.Target>
-            </p:CvClickWithDescriptor>
-            <If Condition="[&quot;January&quot;.Equals(Month)]" sap:VirtualizedContainerService.HintSize="410,648" sap2010:WorkflowViewState.IdRef="If_3">
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <If Condition="[&quot;January&quot;.Equals(Month)]" sap:VirtualizedContainerService.HintSize="486,680" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,498" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
@@ -300,7 +352,7 @@
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8" />
               </If.Else>
             </If>
-            <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Button (458,481,137,38)&quot; +&#xA;&quot;Anchor: Text 'Download Report' (472,493,111,16)&quot;]" DesignTimeCacheId="edd7f952-35ad-4663-80a4-896a2d8a42c9" DesignTimeScaleFactor="1" DisplayName="CV Click - Button" sap:VirtualizedContainerService.HintSize="410,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_5" InformativeScreenshot="9d27feef43e63881e599840a4272f347" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
+            <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Button (458,481,137,38)&quot; +&#xA;&quot;Anchor: Text 'Download Report' (472,493,111,16)&quot;]" DesignTimeCacheId="edd7f952-35ad-4663-80a4-896a2d8a42c9" DesignTimeScaleFactor="1" DisplayName="CV Click - Button" sap:VirtualizedContainerService.HintSize="486,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_5" InformativeScreenshot="9d27feef43e63881e599840a4272f347" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
               <p:CvClickWithDescriptor.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -334,8 +386,8 @@
                 </ui:Target>
               </p:CvClickWithDescriptor.Target>
             </p:CvClickWithDescriptor>
-            <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="410,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
-            <p:CvElementExistsWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: Text 'No report found for this vendor / month / year that you have specified.' (751,13,409,16)&quot; +&#xD;&#xA;&quot;Anchor: Text 'OK' (1125,75,20,12)&quot;]" DesignTimeCacheId="439cb29e-dad0-4eb2-af63-3346eccd0766" DesignTimeScaleFactor="1" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="410,137" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_1" InformativeScreenshot="4e33e16e4a0264670d41e95b07c072fe" NumberOfScrolls="2" Result="[IsPopupExists]" ScrollDirection="None" Version="V6">
+            <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="486,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <p:CvElementExistsWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: Text 'No report found for this vendor / month / year that you have specified.' (751,13,409,16)&quot; +&#xA;&quot;Anchor: Text 'OK' (1125,75,20,12)&quot;]" DesignTimeCacheId="439cb29e-dad0-4eb2-af63-3346eccd0766" DesignTimeScaleFactor="1" DisplayName="CV Element Exists - Text" sap:VirtualizedContainerService.HintSize="486,137" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_1" InformativeScreenshot="4e33e16e4a0264670d41e95b07c072fe" NumberOfScrolls="2" Result="[IsPopupExists]" ScrollDirection="None" Version="V6">
               <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
                 <uc:CvDescriptor Id="4ac2d64d-7d62-4e17-8c08-a8d9b9734700">
                   <uc:CvDescriptor.Anchors>
@@ -349,7 +401,7 @@
                 </uc:CvDescriptor>
               </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
             </p:CvElementExistsWithDescriptor>
-            <If Condition="[IsPopupExists]" sap:VirtualizedContainerService.HintSize="410,555" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[IsPopupExists]" sap:VirtualizedContainerService.HintSize="486,587" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,405" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -850,7 +902,7 @@
         </ActivityFunc>
       </p:CVScope.OCREngine>
       <p:CVScope.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c1fc8932-4658-443a-9381-2e9be9ed46cc" InformativeScreenshot="453d80e49a0c790b8a131b9586dd7dc1" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Download Monthly Report - Google Chrome' /&gt;&lt;wnd aaname='Horizontal' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;" WaitForReady="INTERACTIVE">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c1fc8932-4658-443a-9381-2e9be9ed46cc" InformativeScreenshot="453d80e49a0c790b8a131b9586dd7dc1" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Download Monthly Report - Google Chrome' /&gt;&lt;wnd aaname='Horizontal' /&gt;" WaitForReady="INTERACTIVE">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -860,5 +912,6 @@
         <InArgument x:TypeArguments="x:Boolean" />
       </p:CVScope.UseLocalServer>
     </p:CVScope>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Download_Report activity ended&quot;]" />
   </Sequence>
 </Activity>

@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,1436</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,1700</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Fetch_TaxID_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -97,7 +97,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Fetch_TaxID" sap:VirtualizedContainerService.HintSize="622,1371" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Fetch_TaxID" sap:VirtualizedContainerService.HintSize="622,1635" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:Image" Name="Image" />
     </Sequence.Variables>
@@ -106,6 +106,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Fetch_TaxID activity started&quot;]" />
     <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="560,1260" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <TryCatch.Try>
         <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="4c2ba18b-400f-4659-a495-34eb4e66f42c" DisplayName="CV Screen Scope 'BODY'" sap:VirtualizedContainerService.HintSize="522,1032" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
@@ -129,7 +130,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <p:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: AnyWordGroup (536,335,68,13)&quot; +&#xD;&#xA;&quot;Anchor: Text 'TaxID:' (491,335,41,13)&quot;]" DesignTimeCacheId="4c2ba18b-400f-4659-a495-34eb4e66f42c" DesignTimeScaleFactor="1" DisplayName="CV Get Text - Any Word Group" sap:VirtualizedContainerService.HintSize="388,220" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="fd373d5f9ce4608434934f276b2b6e83" NumberOfScrolls="2" RefreshBefore="True" Result="[TaxID]" ScrollDirection="None" Version="V6">
+                      <p:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: AnyWordGroup (536,335,68,13)&quot; +&#xA;&quot;Anchor: Text 'TaxID:' (491,335,41,13)&quot;]" DesignTimeCacheId="4c2ba18b-400f-4659-a495-34eb4e66f42c" DesignTimeScaleFactor="1" DisplayName="CV Get Text - Any Word Group" sap:VirtualizedContainerService.HintSize="388,220" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="fd373d5f9ce4608434934f276b2b6e83" NumberOfScrolls="2" RefreshBefore="True" Result="[TaxID]" ScrollDirection="None" Version="V6">
                         <p:CvGetTextWithDescriptor.DesignTimeDescriptor>
                           <uc:CvDescriptor Id="46045091-7e7d-4717-a891-1b242c4e7fd5">
                             <uc:CvDescriptor.Anchors>
@@ -174,6 +175,9 @@
               </Sequence>
             </ActivityAction>
           </p:CVScope.Body>
+          <p:CVScope.DesignTimeCache>
+            <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" DataSent="False" />
+          </p:CVScope.DesignTimeCache>
           <p:CVScope.DesignTimeCacheContainer>
             <uc:CvCacheContainer>
               <uc:CvCacheContainer.Caches>
@@ -348,5 +352,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Fetch_TaxID activity ended&quot;]" />
   </Sequence>
 </Activity>

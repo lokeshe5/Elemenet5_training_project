@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.TypeName="WI4" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bg="clr-namespace:Browser_Sequences.Generic;assembly=Browser Sequences" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.TypeName="WI4" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="TypeName" Type="InArgument(x:String)" />
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,4992</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,5495</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,12 @@
       <x:String>UiPath.CV</x:String>
       <x:String>UiPath.CSV</x:String>
       <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -104,9 +110,15 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="668,4927" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="668,5430" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="https://acme-test.uipath.com/login" Name="Url" />
       <Variable x:TypeArguments="x:String" Name="TotalPageNumber" />
@@ -115,28 +127,42 @@
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="FilteredDataMap" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="Months" />
       <Variable x:TypeArguments="x:String" Name="PreviousYear" />
-      <Variable x:TypeArguments="x:String" Name="UploadFilePath" />
+      <Variable x:TypeArguments="x:String" Default="C:\Users\lokesh.subramaniyan\Documents\Yearly-reports\" Name="UploadFilePath" />
       <Variable x:TypeArguments="x:String" Name="UploadFileName" />
       <Variable x:TypeArguments="x:String" Name="TaxID" />
       <Variable x:TypeArguments="x:Int32" Name="MonthCount" />
+      <Variable x:TypeArguments="x:Int32" Name="PageCount" />
+      <Variable x:TypeArguments="x:String" Name="TableOut" />
+      <Variable x:TypeArguments="x:String" Name="FlowConfigString" />
+      <Variable x:TypeArguments="njl:JObject" Name="FlowConfig" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <bg:Launch sap:VirtualizedContainerService.HintSize="606,90" sap2010:WorkflowViewState.IdRef="Launch_1" Url="[Url]" />
+    <ui:ReadTextFile File="{x:Null}" Content="[FlowConfigString]" DisplayName="Read Text File" FileName="flowconfig.json" sap:VirtualizedContainerService.HintSize="606,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="606,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[FlowConfig]" JsonString="[FlowConfigString]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Generic\Acme Launch.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Generic\Acme Launch.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="Url">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="FlowConfig(&quot;AcmeURL&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="ui:Browser" x:Key="LaunchedTab" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Generic\ACMELoginCV.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Generic\ACMELoginCV.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Log In</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="WorkSpaceName">[FlowConfig("WorkSpaceId").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="CredentialAssetName">[FlowConfig("CredentialAssetName").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Click Menu.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="click menu\Click Menu.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="MenuName">
-          <Literal x:TypeArguments="x:String">Work Items</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="MenuName">Work Items</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="SubMenuName" />
+        <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Dashboard</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="get total page count\findTotalPageCount.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="get total page count\findTotalPageCount.xaml">
@@ -149,17 +175,18 @@
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="ExtractedTable">[ExtractedData]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Generic\Set Page Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Generic\Set Page Number.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="ExtractedDatas">[ExtractedData]</InOutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="FilteredDatas">[FilteredDataMap]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ColumnName">Page Number</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="filter data\Filter Data.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="filter data\Filter Data.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="ExtractedData">[ExtractedData]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="FilteredData">[FilteredData]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="TypeName">[TypeName]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Generic\Set Page Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="606,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Generic\Set Page Number.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="ExtractedDatas">[ExtractedData]</InArgument>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="FilteredDatas">[FilteredDataMap]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <Assign sap:VirtualizedContainerService.HintSize="606,82" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -178,14 +205,22 @@
         <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[New List(Of String)(new String(){"January",  "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})]</InArgument>
       </Assign.Value>
     </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="606,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[PageCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="606,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[PreviousYear]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[FilteredData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="606,3392" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[FilteredData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="606,3530" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,3275" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,3413" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="UploadId" />
             </Sequence.Variables>
@@ -197,15 +232,11 @@
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[CurrentRow(&quot;WIID&quot;).ToString + &quot; &quot; + FilteredDataMap(CurrentRow(&quot;WIID&quot;).ToString).ToString]" />
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="open work item details\Open Details.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="open work item details\Open Details.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="Wiid">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;WIID&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="FilteredDataMap">
-                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="FilteredDataMap" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="MenuName">
-                  <Literal x:TypeArguments="x:String">Work Items</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Wiid">[CurrentRow("WIID").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MenuName">Work Items</InArgument>
+                <InOutArgument x:TypeArguments="x:Int32" x:Key="PageCount">[PageCount]</InOutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Work Items</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageNumber">[CurrentRow("Page Number").ToString]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="fetch tax id\Fetch TaxID.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="fetch tax id\Fetch TaxID.xaml">
@@ -213,21 +244,24 @@
                 <OutArgument x:TypeArguments="x:String" x:Key="TaxID">[TaxID]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[UploadFileName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["Yearly-Report-"+ PreviousYear +"-"+ TaxID +".csv"]</InArgument>
+              </Assign.Value>
+            </Assign>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="goto page\Goto Page.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="goto page\Goto Page.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="PageName">
-                  <Literal x:TypeArguments="x:String">Home</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageName">Home</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="click menu\Click Menu.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="click menu\Click Menu.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="MenuName">
-                  <Literal x:TypeArguments="x:String">Reports</Literal>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="SubMenuName">
-                  <Literal x:TypeArguments="x:String">Download Monthly Report</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MenuName">Reports</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="SubMenuName">Download Monthly Report</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Dashboard</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -238,7 +272,7 @@
                 <InArgument x:TypeArguments="x:Int32">0</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510,646" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Months]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510,662" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Months]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
@@ -267,27 +301,13 @@
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Group Monthly Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Group Monthly Report.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="Month">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="currentItem" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="FieldName">
-                          <Literal x:TypeArguments="x:String">Month</Literal>
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="TaxID">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="TaxID" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Year">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PreviousYear" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MonthCount">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="MonthCount.ToString" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="UploadFilepath">
-                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="UploadFilePath" />
-                        </OutArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="UplaoadFileName">
-                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="UploadFileName" />
-                        </OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Month">[currentItem]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FieldName">Month</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="TaxID">[TaxID]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Year">[PreviousYear]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MonthCount">[MonthCount.ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="UploadFilepath">[FlowConfig("UploadFilePath").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="UplaoadFileName">[UploadFileName]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </Sequence>
@@ -304,93 +324,66 @@
             </Assign>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Goto Page 2.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Goto Page 2.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="PageName">
-                  <Literal x:TypeArguments="x:String">Home</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageName">Home</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="click menu\Click Menu.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="click menu\Click Menu.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="MenuName">
-                  <Literal x:TypeArguments="x:String">Reports</Literal>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="SubMenuName">
-                  <Literal x:TypeArguments="x:String">Upload Yearly Report</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MenuName">Reports</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="SubMenuName">Upload Yearly Report</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Dashboard</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="UploadReport.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="UploadReport.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="TaxID">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="TaxID" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Year">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PreviousYear" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="UploadFilePath">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="UploadFilePath" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="UploadFileName">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="UploadFileName" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="TaxID">[TaxID]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Year">[PreviousYear]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="UploadFilePath">[UploadFilePath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="UploadFileName">[UploadFileName]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get Upload ID.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Get Upload ID.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="x:String" x:Key="UploadID">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="UploadId" />
-                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="UploadID">[UploadId]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Goto Page 3.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Goto Page 3.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="PageName">
-                  <Literal x:TypeArguments="x:String">Home</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageName">Home</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="click menu\Click Menu.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="click menu\Click Menu.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="MenuName">
-                  <Literal x:TypeArguments="x:String">Work Items</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MenuName">Work Items</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="SubMenuName" />
+                <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Dashboard</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="open work item details\Open Details.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="open work item details\Open Details.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="Wiid">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;WIID&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="FilteredDataMap">
-                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="FilteredDataMap" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Wiid">[CurrentRow("WIID").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="MenuName" />
+                <InOutArgument x:TypeArguments="x:Int32" x:Key="PageCount">[PageCount]</InOutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Work Items</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageNumber">[CurrentRow("Page Number").ToString]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="UpdateWorkItems.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="UpdateWorkItems.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="UploadId">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="UploadId" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Status">
-                  <Literal x:TypeArguments="x:String">Completed</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="UploadId">[UploadId]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Status">Completed</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="goto page\Goto Page.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="goto page\Goto Page.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="PageName">
-                  <Literal x:TypeArguments="x:String">Home</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageName">Home</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="click menu\Click Menu.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="click menu\Click Menu.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="MenuName">
-                  <Literal x:TypeArguments="x:String">Work Items</Literal>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MenuName">Work Items</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="SubMenuName" />
+                <InArgument x:TypeArguments="x:String" x:Key="Title">ACME System 1 - Dashboard</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>

@@ -5,8 +5,8 @@
     <x:Property Name="TaxID" Type="InArgument(x:String)" />
     <x:Property Name="Year" Type="InArgument(x:String)" />
     <x:Property Name="MonthCount" Type="InArgument(x:String)" />
-    <x:Property Name="UploadFilepath" Type="OutArgument(x:String)" />
-    <x:Property Name="UplaoadFileName" Type="OutArgument(x:String)" />
+    <x:Property Name="UploadFilepath" Type="InArgument(x:String)" />
+    <x:Property Name="UplaoadFileName" Type="InArgument(x:String)" />
   </x:Members>
   <this:Group_Monthly_Report.TaxID>
     <InArgument x:TypeArguments="x:String" />
@@ -20,7 +20,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,2171</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,2821</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Group_Monthly_Report_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,7 +105,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Group_Monthly_Report" sap:VirtualizedContainerService.HintSize="668,2106" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Group_Monthly_Report" sap:VirtualizedContainerService.HintSize="668,2756" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="MonthlyReport" />
       <Variable x:TypeArguments="sd:DataTable" Name="MonthyReportvar" />
@@ -116,10 +116,11 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="606,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Group_Monthly_Report activity started&quot;]" />
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[IsFileExist]" sap:VirtualizedContainerService.HintSize="606,90" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\lokesh.subramaniyan\Downloads\Report-&quot;+ TaxID+&quot;-&quot;+ MonthCount +&quot;.csv&quot;]" PathType="File" />
-    <If Condition="[IsFileExist]" sap:VirtualizedContainerService.HintSize="606,1865" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[IsFileExist]" sap:VirtualizedContainerService.HintSize="606,2251" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="572,1715" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="572,2069" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,7 +160,8 @@
               <InArgument x:TypeArguments="sd:DataTable">[MonthlyReport.Clone]</InArgument>
             </Assign.Value>
           </Assign>
-          <If Condition="[&quot;January&quot;.Equals(Month)]" sap:VirtualizedContainerService.HintSize="530,392" sap2010:WorkflowViewState.IdRef="If_2">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="530,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[UploadFilepath + UplaoadFileName]" />
+          <If Condition="[&quot;January&quot;.Equals(Month)]" sap:VirtualizedContainerService.HintSize="530,424" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="476,242" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
@@ -167,41 +169,53 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:WriteCsvFile AddHeaders="True" DataTable="[MonthyReportvar]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;C:\Users\lokesh.subramaniyan\Documents\Yearly-reports\Yearly-Report-&quot;+ Year +&quot;-&quot;+ TaxID +&quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
+                <ui:WriteCsvFile AddHeaders="True" DataTable="[MonthyReportvar]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[UploadFilepath + UplaoadFileName]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
               </Sequence>
             </If.Then>
             <If.Else>
               <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
             </If.Else>
           </If>
-          <ui:AppendCsvFile DataTable="[MonthlyReport]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="[&quot;C:\Users\lokesh.subramaniyan\Documents\Yearly-reports\Yearly-Report-&quot;+ Year +&quot;-&quot;+ TaxID +&quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="530,133" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1" />
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="530,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-            <ui:MultipleAssign.AssignOperations>
-              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:String">[UploadFilepath]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">C:\Users\lokesh.subramaniyan\Documents\Yearly-reports\</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:String">[UplaoadFileName]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">["Yearly-Report-"+ Year +"-"+ TaxID +".csv"]</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
-              </scg:List>
-            </ui:MultipleAssign.AssignOperations>
-          </ui:MultipleAssign>
+          <ui:AppendCsvFile DataTable="[MonthlyReport]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="[UploadFilepath + UplaoadFileName]" sap:VirtualizedContainerService.HintSize="530,133" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="530,322" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="493,243" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[UploadFilepath]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">C:\Users\lokesh.subramaniyan\Documents\Yearly-reports\</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[UplaoadFileName]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">["Yearly-Report-"+ Year +"-"+ TaxID +".csv"]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                </ui:MultipleAssign>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
         </Sequence>
       </If.Then>
       <If.Else>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7" />
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="606,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Group_Monthly_Report activity ended&quot;]" />
   </Sequence>
 </Activity>

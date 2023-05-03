@@ -1,15 +1,16 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Set_Page_Number" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="ExtractedDatas" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="ExtractedDatas" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="FilteredDatas" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="ColumnName" Type="InArgument(x:String)" />
   </x:Members>
-  <this:Set_Page_Number.ExtractedDatas>
-    <InArgument x:TypeArguments="sd:DataTable" />
-  </this:Set_Page_Number.ExtractedDatas>
+  <this:Set_Page_Number.ColumnName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Set_Page_Number.ColumnName>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>658,1344</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,1856</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Set_Page_Number_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -90,7 +91,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Set_Page_Number" sap:VirtualizedContainerService.HintSize="668,1279" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Set_Page_Number" sap:VirtualizedContainerService.HintSize="668,1923" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="PageCount" />
     </Sequence.Variables>
@@ -99,6 +100,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="606,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Set_Page_Number activity started&quot;]" />
     <Assign sap:VirtualizedContainerService.HintSize="606,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[PageCount]</OutArgument>
@@ -115,13 +117,14 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(of String, String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ExtractedDatas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="606,924" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[ColumnName]" DataTable="[ExtractedDatas]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="606,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ExtractedDatas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="606,1078" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,807" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,961" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="PageNumber" />
             </Sequence.Variables>
@@ -138,7 +141,7 @@
                 <InArgument x:TypeArguments="x:Int32">[PageCount + 1]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[(PageCount mod 10) = 0]" sap:VirtualizedContainerService.HintSize="510,320" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[(PageCount mod 10) = 0]" sap:VirtualizedContainerService.HintSize="510,352" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -174,6 +177,14 @@
                 </Sequence>
               </If.Else>
             </If>
+            <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[CurrentRow(ColumnName)]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[PageNumber]</InArgument>
+              </Assign.Value>
+            </Assign>
             <Assign sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[FilteredDatas(CurrentRow("WIID").ToString)]</OutArgument>
@@ -187,5 +198,6 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="606,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Set_Page_Number activity ended&quot;]" />
   </Sequence>
 </Activity>

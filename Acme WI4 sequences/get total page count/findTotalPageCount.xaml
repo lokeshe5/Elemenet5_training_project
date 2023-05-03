@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,1627</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,1963</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>findTotalPageCount_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -109,18 +109,19 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="findTotalPageCount" sap:VirtualizedContainerService.HintSize="544,1562" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="findTotalPageCount" sap:VirtualizedContainerService.HintSize="544,1898" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="482,1451" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="482,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Goto page activity started&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="482,1523" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="sd:Image" Name="Image" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="6b71104c-5961-46d6-b061-6165e298ec3e" DisplayName="CV Screen Scope 'BODY'" sap:VirtualizedContainerService.HintSize="444,1223" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
+        <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="6b71104c-5961-46d6-b061-6165e298ec3e" DisplayName="CV Screen Scope 'BODY'" sap:VirtualizedContainerService.HintSize="444,1295" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
           <p:CVScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
@@ -144,7 +145,7 @@
                     </uc:CvDescriptor>
                   </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
                 </p:CvElementExistsWithDescriptor>
-                <If Condition="[IsWorkItemPage]" sap:VirtualizedContainerService.HintSize="410,722" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[IsWorkItemPage]" sap:VirtualizedContainerService.HintSize="410,754" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
                     <Sequence sap:VirtualizedContainerService.HintSize="376,572" sap2010:WorkflowViewState.IdRef="Sequence_3">
                       <sap:WorkflowViewStateService.ViewState>
@@ -153,7 +154,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Is valid work item page&quot;]" />
-                      <p:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: AnyWordGroup (1390,786,17,14)&quot; +&#xD;&#xA;&quot;Anchor: ArrowButton (1421,781,27,27)&quot;]" DesignTimeCacheId="6b71104c-5961-46d6-b061-6165e298ec3e" DesignTimeScaleFactor="1" DisplayName="CV Get Text - Any Word Group" sap:VirtualizedContainerService.HintSize="334,220" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="0a32ce6f77db1e4322bd6e6748bb0150" NumberOfScrolls="2" RefreshBefore="True" Result="[TotalPageCount]" ScrollDirection="None" Version="V6">
+                      <p:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" Descriptor="[&quot;Target: AnyWordGroup (1390,786,17,14)&quot; +&#xA;&quot;Anchor: ArrowButton (1421,781,27,27)&quot;]" DesignTimeCacheId="6b71104c-5961-46d6-b061-6165e298ec3e" DesignTimeScaleFactor="1" DisplayName="CV Get Text - Any Word Group" sap:VirtualizedContainerService.HintSize="334,220" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="0a32ce6f77db1e4322bd6e6748bb0150" NumberOfScrolls="2" RefreshBefore="True" Result="[TotalPageCount]" ScrollDirection="None" Version="V6">
                         <p:CvGetTextWithDescriptor.DesignTimeDescriptor>
                           <uc:CvDescriptor Id="9c3ad78d-b64e-406c-a1f1-c4fdf3ec8244">
                             <uc:CvDescriptor.Anchors>
@@ -528,7 +529,7 @@
             </ActivityFunc>
           </p:CVScope.OCREngine>
           <p:CVScope.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345d9733-e79c-44a4-a267-912cf345821c" InformativeScreenshot="490349a2d4d8f123269121bed6b4a8c5" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="INTERACTIVE">
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345d9733-e79c-44a4-a267-912cf345821c" InformativeScreenshot="490349a2d4d8f123269121bed6b4a8c5" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;" WaitForReady="INTERACTIVE">
               <ui:Target.TimeoutMS>
                 <InArgument x:TypeArguments="x:Int32" />
               </ui:Target.TimeoutMS>
@@ -556,5 +557,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="482,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Goto page activity ended&quot;]" />
   </Sequence>
 </Activity>

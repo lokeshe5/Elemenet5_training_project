@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>524,970</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1427,1194</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Goto_Page_2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -98,25 +98,26 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Goto_Page_2" sap:VirtualizedContainerService.HintSize="534,905" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Goto_Page_2" sap:VirtualizedContainerService.HintSize="534,1129" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,794" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="472,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Goto_Page_2 activity started&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,754" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="sd:Image" Name="Image" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="b92bb9eb-c098-4ec9-a3b2-8d690fc35189" DisplayName="CV Screen Scope 'OL'" sap:VirtualizedContainerService.HintSize="434,566" sap2010:WorkflowViewState.IdRef="CVScope_1" RequiresDefaultValues="True" SendOnPremData="False" Version="V6">
+        <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="b92bb9eb-c098-4ec9-a3b2-8d690fc35189" DisplayName="CV Screen Scope 'OL'" sap:VirtualizedContainerService.HintSize="434,526" sap2010:WorkflowViewState.IdRef="CVScope_1" RequiresDefaultValues="True" SendOnPremData="False" Version="V6">
           <p:CVScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
               </ActivityAction.Argument>
               <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '&quot;+ PageName +&quot;' (404,171,284,16)&quot; +&#xD;&#xA;&quot;Anchor: Text 'ACME System 1' (388,16,132,20)&quot;]" DesignTimeCacheId="b92bb9eb-c098-4ec9-a3b2-8d690fc35189" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="400,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_1" InformativeScreenshot="1a78908030221b65091d1e1696b776d7" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
+                <p:CvClickWithDescriptor DelayBefore="{x:Null}" DelayMS="{x:Null}" DelayScreenshotAfterScroll="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" Descriptor="[&quot;Target: Text '&quot;+ PageName +&quot;' (404,171,284,16)&quot; +&#xA;&quot;Anchor: Text 'ACME System 1' (388,16,132,20)&quot;]" DesignTimeCacheId="b92bb9eb-c098-4ec9-a3b2-8d690fc35189" DesignTimeScaleFactor="1" DisplayName="CV Click - Text" sap:VirtualizedContainerService.HintSize="400,185" sap2010:WorkflowViewState.IdRef="CvClickWithDescriptor_1" InformativeScreenshot="1a78908030221b65091d1e1696b776d7" KeyModifiers="None" MouseButton="BTN_LEFT" NumberOfScrolls="2" ScrollDirection="None" Version="V6">
                   <p:CvClickWithDescriptor.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -270,7 +271,7 @@
             </ActivityFunc>
           </p:CVScope.OCREngine>
           <p:CVScope.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bb8136a3-30ea-4db8-86f2-5b9dd8131205" InformativeScreenshot="dfcff0cc7445f953e06123d40568596a" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="INTERACTIVE">
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bb8136a3-30ea-4db8-86f2-5b9dd8131205" InformativeScreenshot="dfcff0cc7445f953e06123d40568596a" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;" WaitForReady="INTERACTIVE">
               <ui:Target.TimeoutMS>
                 <InArgument x:TypeArguments="x:Int32" />
               </ui:Target.TimeoutMS>
@@ -306,5 +307,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="472,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Goto_Page_2 activity ended&quot;]" />
   </Sequence>
 </Activity>

@@ -1,0 +1,8 @@
+{
+    "AcmeURL": "https://acme-test.uipath.com/login",
+    "UploadFilePath": "C:\\Users\\lokesh.subramaniyan\\Documents\\Yearly-reports\\",
+    "WorkSpaceId": "lokeshtechy07@gmail.com's workspace",
+    "CredentialAssetName": "AcmeLogin",
+    "QueueName": "Acme_WI4_Details",
+    "BotType": "performer"
+}
